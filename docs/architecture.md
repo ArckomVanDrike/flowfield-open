@@ -520,6 +520,107 @@ Architecturally, each responsibility remains isolated.
 
 ---
 
+## AI Integration Architecture
+
+Artificial intelligence is intentionally separated from the deterministic orchestration core.
+
+```text
++--------------------------------------------------+
+|                 FlowField Core                   |
+|                                                  |
+| Workflow State                                   |
+| Validation                                       |
+| Dependencies                                     |
+| Events                                           |
+| Blocking Rules                                   |
+| Audit                                            |
++------------------------+-------------------------+
+                         |
+                         v
++--------------------------------------------------+
+|                AI Adapter Layer                  |
+|                                                  |
+| Interpretation                                   |
+| Assistance                                       |
+| Classification Support                           |
+| Natural Language Interaction                     |
++------------------------+-------------------------+
+                         |
+             +-----------+-----------+
+             |                       |
+             v                       v
+        Edge Provider           Cloud Provider
+             |                       |
+             v                       v
+            Outy               External / Private
+```
+
+The AI layer can help interpret operational intent and assist configuration, but workflow authority remains within the FlowField orchestration architecture.
+
+This creates an important architectural property:
+
+**AI providers can be replaced without replacing the workflow engine.**
+
+### Edge-First Reference Integration
+
+The reference architecture uses **Outy**, developed within the CashOut ecosystem, as an edge AI integration.
+
+In this model, FlowField can connect to intelligence deployed close to the operational environment through a dedicated adapter layer.
+
+Outy is therefore a reference implementation of the AI interface rather than a mandatory dependency of FlowField.
+
+### Provider-Agnostic Adapter
+
+The same integration boundary can be connected to alternative AI infrastructure.
+
+Conceptually:
+
+```text
+                 FlowField
+                     |
+                     v
+                 AI Adapter
+                     |
+        +------------+------------+
+        |            |            |
+        v            v            v
+       Outy       Cloud API    Private Model
+       Edge        Provider      Endpoint
+```
+
+Potential integrations may include customer-managed infrastructure, hosted inference services, enterprise gateways or external cloud AI providers.
+
+Provider-specific behavior belongs behind the adapter boundary.
+
+The workflow engine should not contain provider-specific orchestration logic.
+
+### Deterministic Core Principle
+
+FlowField follows a hybrid architecture:
+
+```text
+AI
+ |
+ +--> interpret
+ +--> assist
+ +--> suggest
+ +--> classify where appropriate
+
+Deterministic Core
+ |
+ +--> validate
+ +--> authorize
+ +--> transition state
+ +--> enforce requirements
+ +--> block
+ +--> allow closure
+ +--> preserve audit history
+```
+
+This preserves operational predictability while still allowing AI capabilities to evolve independently.
+
+---
+
 ## Reporting and Audit
 
 Reporting is a consequence of structured execution.

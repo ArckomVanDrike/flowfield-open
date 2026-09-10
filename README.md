@@ -407,6 +407,84 @@ Auditability
 
 ---
 
+## Edge-First and Provider-Agnostic AI
+
+FlowField 3.0 is designed with a clear separation between its deterministic orchestration core and its optional AI capabilities.
+
+**FlowField is AI-assisted, not AI-dependent.**
+
+Core operational functions such as:
+
+- workflow state
+- task progression
+- validation
+- blocking conditions
+- dependencies
+- auditability
+- closure control
+
+remain governed by structured and deterministic logic.
+
+AI can assist with higher-level operations such as activity interpretation, configuration support, classification assistance and natural-language interaction without becoming the authority responsible for critical workflow decisions.
+
+### Edge-First Reference Architecture
+
+The reference implementation is designed to work with **Outy**, the edge AI layer developed within the CashOut ecosystem.
+
+This allows intelligence to be deployed close to the operational environment instead of requiring every interaction to depend directly on a remote cloud model.
+
+```text
+                    FLOWFIELD 3.0
+
+                Operational Clients
+             Web                 Mobile
+              |                    |
+              +---------+----------+
+                        |
+                        v
+              +-------------------+
+              |  FlowField Core   |
+              |                   |
+              | Workflow          |
+              | Rules             |
+              | State             |
+              | Validation        |
+              | Audit             |
+              +---------+---------+
+                        |
+                  Optional AI
+                        |
+              +---------v---------+
+              |    AI Adapter     |
+              | Provider-Agnostic |
+              +---------+---------+
+                        |
+           +------------+-------------+
+           |                          |
+           v                          v
+      Edge / Local AI              Cloud AI
+          Outy                 External Provider
+    CashOut ecosystem          Private / Hosted API
+```
+
+### Provider Independence
+
+Outy is the reference AI integration, not a hard dependency of the platform.
+
+The AI layer can be adapted to other inference environments, including:
+
+- cloud AI providers
+- privately hosted models
+- enterprise AI gateways
+- local inference services
+- customer-specific AI infrastructure
+
+This allows the deployment model to be selected according to operational, infrastructure and customer requirements.
+
+The orchestration architecture remains unchanged when the AI provider changes.
+
+---
+
 ## Current Direction
 
 FlowField 3.0 is being developed as a reusable orchestration platform for enterprise field operations.
