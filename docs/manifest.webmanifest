@@ -1,0 +1,26 @@
+{
+  "id": "/flowfield-open/",
+  "name": "FlowField 3.0",
+  "short_name": "FlowField",
+  "description": "Field Operations Orchestration Platform for guided, stateful and auditable workflows.",
+  "start_url": "/flowfield-open/",
+  "scope": "/flowfield-open/",
+  "display": "standalone",
+  "background_color": "#071522",
+  "theme_color": "#071522",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "assets/flowfield-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/flowfield-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
