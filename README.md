@@ -14,7 +14,7 @@ Instead of relying on static forms or generic checklists, FlowField transforms a
 
 FlowField is not simply a data collection application.
 
-It is an orchestration layer for field operations.
+It is an **orchestration layer for field operations**.
 
 The platform can:
 
@@ -63,194 +63,200 @@ Evidence / Events / Actions
         |
         v
 Reporting & Audit
+```
 
 The technician sees only the actions required at that moment.
 
 The orchestration engine manages the underlying process.
 
-Web + Field Experience
+---
+
+## Web + Field Experience
 
 FlowField is designed around two complementary interfaces.
 
-Web Workspace
+### Web Workspace
 
 The web interface is used to define and govern operational activities.
 
-A guided configuration process helps users describe the activity and specify relevant operational requirements such as:
+A guided configuration process helps users specify:
 
-activity context
-intervention target
-safety and access requirements
-field evidence requirements
-anomaly handling
-corrective actions
-formal documentation
+- activity context
+- intervention target
+- safety and access requirements
+- field evidence requirements
+- anomaly handling
+- corrective actions
+- formal documentation
 
 FlowField then prepares the corresponding operational workflow.
 
-Mobile Field Experience
+### Mobile Field Experience
 
 The mobile experience is designed for technicians and field operators.
 
-The technician does not build the process.
+**The technician does not build the process. They execute it.**
 
-They execute it.
+A typical flow may look like:
 
-Typical steps may include:
-
+```text
 Check-in
-   ↓
+   |
+   v
 Access validation
-   ↓
+   |
+   v
 Safety controls
-   ↓
+   |
+   v
 Asset identification
-   ↓
+   |
+   v
 Inspection / data collection
-   ↓
+   |
+   v
 Evidence capture
-   ↓
+   |
+   v
 Anomaly detection
-   ↓
+   |
+   v
 Corrective action
-   ↓
+   |
+   v
 Validation
-   ↓
+   |
+   v
 Closure
+```
 
 The interface can remain simple and linear even when the underlying workflow contains complex rules and dependencies.
 
-Modular Architecture
+---
+
+## Modular Architecture
 
 FlowField 3.0 is based on reusable capability blocks rather than industry-specific hardcoded workflows.
 
-MOD_CONTEXT
+| Module | Responsibility |
+|---|---|
+| **MOD_CONTEXT** | Operator identity, activity context, site, geolocation, authorization and access |
+| **MOD_SAFETY** | Safety checks, PPE, operational risk, work permits and stop-work conditions |
+| **MOD_ASSET** | Asset identification, tracking, installation, removal, replacement and inventory |
+| **MOD_DATA_CAPTURE** | Photos, video, audio, measurements, notes, checklists and field evidence |
+| **MOD_CRITICALITY** | Detection, classification and severity assessment of anomalies |
+| **MOD_DOCUMENTATION** | Formal documents, certificates, compliance and document lifecycle |
+| **MOD_ACTIONS** | Corrective actions, remediation, assignments, priorities and SLA tracking |
+| **MOD_FLOW** | Task progression, dependencies, branching, blocking rules, escalation and closure |
 
-Operator identification, activity context, site information, geolocation, authorization and physical access.
+---
 
-MOD_SAFETY
+## Reusable by Design
 
-Safety checks, PPE validation, operational risk, work permits and stop-work conditions.
-
-MOD_ASSET
-
-Asset identification, QR/NFC/serial tracking, installation, removal, replacement and inventory operations.
-
-MOD_DATA_CAPTURE
-
-Photos, video, audio, technical measurements, notes, field checklists, annotations and operational evidence.
-
-MOD_CRITICALITY
-
-Detection, classification and severity assessment of anomalies and non-conformities.
-
-MOD_DOCUMENTATION
-
-Formal documents, certificates, compliance attachments, metadata and document lifecycle management.
-
-MOD_ACTIONS
-
-Corrective actions, remediation, assignments, priorities, SLA tracking and action lifecycle.
-
-MOD_FLOW
-
-Workflow orchestration engine responsible for task progression, dependencies, conditions, branching, blocking rules, escalation and closure.
-
-Reusable by Design
-
-FlowField modules are not tied to a specific industry.
+FlowField modules are **capability blocks**, not industry-specific applications.
 
 An operational workflow is created by combining and configuring the capabilities required for a particular activity.
 
-This makes the platform suitable for environments including:
+This makes the platform applicable to:
 
-utilities
-energy
-telecommunications
-construction
-railway infrastructure
-industrial maintenance
-technical inspections
-safety audits
-asset management
-regulated field operations
+- utilities
+- energy
+- telecommunications
+- construction
+- railway infrastructure
+- industrial maintenance
+- technical inspections
+- safety audits
+- asset management
+- regulated field operations
 
 The same orchestration model can support very different operational scenarios without rebuilding the platform for every use case.
 
-Example Use Cases
-Utility Infrastructure Inspection
+---
 
-A technician receives an assigned inspection.
+## Example Use Cases
 
-FlowField can guide the technician through:
+### Utility Infrastructure Inspection
 
+```text
 GPS check-in
-→ site authorization
-→ safety verification
-→ infrastructure identification
-→ required photographic evidence
-→ technical measurements
-→ anomaly classification
-→ corrective action
-→ signatures
-→ controlled closure
-Construction Site Inspection
+-> site authorization
+-> safety verification
+-> infrastructure identification
+-> photographic evidence
+-> technical measurements
+-> anomaly classification
+-> corrective action
+-> signatures
+-> controlled closure
+```
 
-The workflow can enforce:
+### Construction Site Inspection
 
-site identification
-→ PPE validation
-→ access conditions
-→ safety checklist
-→ visual evidence
-→ issue registration
-→ remediation tracking
-→ final validation
-Railway Safety Audit
+```text
+Site identification
+-> PPE validation
+-> access conditions
+-> safety checklist
+-> visual evidence
+-> issue registration
+-> remediation tracking
+-> final validation
+```
 
-FlowField can coordinate:
+### Railway Safety Audit
 
-operator authorization
-→ infrastructure access
-→ safety controls
-→ inspection tasks
-→ evidence collection
-→ non-conformity classification
-→ escalation
-→ documentation
-→ audit closure
-Orchestration Instead of Static Forms
+```text
+Operator authorization
+-> infrastructure access
+-> safety controls
+-> inspection tasks
+-> evidence collection
+-> non-conformity classification
+-> escalation
+-> documentation
+-> audit closure
+```
+
+---
+
+## Orchestration Instead of Static Forms
 
 Traditional field applications often model an activity as a collection of forms.
 
-FlowField models an activity as a stateful operational process.
+FlowField models an activity as a **stateful operational process**.
 
 A task can therefore:
 
-become mandatory only under specific conditions
-block another task
-generate an event
-request additional evidence
-trigger an escalation
-create a corrective action
-prevent workflow closure
+- become mandatory under specific conditions
+- block another task
+- generate an event
+- request additional evidence
+- trigger an escalation
+- create a corrective action
+- prevent workflow closure
 
-This allows the process to react to what actually happens in the field.
+The process can react to what actually happens in the field.
 
-Deterministic Where It Matters
+---
+
+## Deterministic Where It Matters
 
 FlowField can use intelligent assistance during activity configuration while keeping critical operational decisions governed by structured rules.
 
-Validation, mandatory requirements, task progression and closure conditions can remain deterministic and auditable.
+Validation, mandatory requirements, task progression and closure conditions can remain **deterministic and auditable**.
 
-This design helps reduce ambiguity in environments where operational consistency and accountability matter.
+This reduces ambiguity in environments where operational consistency and accountability matter.
 
-Event-Driven Operations
+---
 
-Operational activity can generate structured events throughout execution.
+## Event-Driven Operations
 
-Examples include:
+Operational activity produces structured events throughout execution.
 
+Examples:
+
+```text
 activity_created
 gps_verified
 access_granted
@@ -264,156 +270,242 @@ action_created
 task_blocked
 workflow_escalated
 activity_closed
+```
 
-These events provide the foundation for audit trails, integrations, reporting and operational analytics.
+These events provide the foundation for:
 
-Evidence and Traceability
+- audit trails
+- integrations
+- reporting
+- dashboards
+- operational analytics
 
-FlowField is designed around evidence-driven execution.
+---
+
+## Evidence and Traceability
+
+FlowField is designed around **evidence-driven execution**.
 
 An activity can require structured evidence such as:
 
-photographs
-videos
-measurements
-checklists
-technical notes
-annotations
-documents
-signatures
-timestamps
-geolocation
-asset identifiers
+- photographs
+- videos
+- measurements
+- checklists
+- technical notes
+- annotations
+- documents
+- signatures
+- timestamps
+- geolocation
+- asset identifiers
 
-Required evidence can be validated before the workflow is allowed to continue or close.
+Required evidence can be validated before a workflow is allowed to continue or close.
 
-Architecture Philosophy
+---
 
-FlowField follows several core architectural principles.
+## Architecture Philosophy
 
-Capability-based architecture
+### Capability-based
 
 Operational capabilities are reusable across different industries and activity types.
 
-Separation of logic and interface
+### Logic separated from UX
 
-The UI may simplify several technical operations into a single field screen while the underlying data model remains structured.
+The interface can simplify several technical operations into a single field experience while the underlying data remains structured.
 
-Deterministic validation
+### Deterministic validation
 
-Critical workflow conditions can be evaluated through explicit rules.
+Critical workflow conditions are evaluated through explicit rules.
 
-Event-driven traceability
+### Event-driven traceability
 
-Relevant operational transitions produce traceable events.
+Relevant operational transitions produce auditable events.
 
-Configuration-driven workflows
+### Configuration-driven
 
-Operational behaviour is defined through configuration rather than duplicated application logic.
+Operational behaviour is configured rather than duplicated through industry-specific application logic.
 
-Auditable execution
+### Auditable execution
 
 Field activities preserve their operational history from creation to closure.
 
-Why FlowField?
+---
 
-Field operations are often managed through a mixture of forms, spreadsheets, messaging applications, photographs and manual supervision.
+## Why FlowField?
 
-FlowField brings those operational steps into a single governed process.
+Field operations are often fragmented across:
 
-It is designed to provide:
+```text
+Forms
++
+Spreadsheets
++
+Messaging
++
+Photographs
++
+Manual supervision
+```
 
+FlowField transforms them into:
+
+```text
 Simple field execution
-        +
++
 Structured orchestration
-        +
++
 Operational evidence
-        +
++
 Process governance
-        +
++
 Auditability
-Current Direction
+```
+
+---
+
+## Architecture at a Glance
+
+```text
+             FLOWFIELD 3.0
+
+        +----------------------+
+        |     Web Workspace    |
+        | Activity Definition  |
+        +----------+-----------+
+                   |
+                   v
+        +----------------------+
+        | Capability Selection |
+        | Module Configuration |
+        +----------+-----------+
+                   |
+                   v
+        +----------------------+
+        |    MOD_FLOW Engine   |
+        | Rules / State /      |
+        | Dependencies         |
+        +----------+-----------+
+                   |
+                   v
+        +----------------------+
+        | Mobile Field Client  |
+        | Guided Execution     |
+        +----------+-----------+
+                   |
+                   v
+        +----------------------+
+        | Evidence / Events /  |
+        | Actions / Audit      |
+        +----------+-----------+
+                   |
+                   v
+        +----------------------+
+        | Reporting & Systems  |
+        +----------------------+
+```
+
+---
+
+## Current Direction
 
 FlowField 3.0 is being developed as a reusable orchestration platform for enterprise field operations.
 
-Current areas of development include:
+Current areas include:
 
-workflow orchestration
-configurable activity generation
-modular operational capabilities
-field execution UX
-evidence management
-anomaly lifecycle
-corrective actions
-audit trails
-reporting
-enterprise integration
-Repository Scope
+- workflow orchestration
+- configurable activity generation
+- modular operational capabilities
+- field execution UX
+- evidence management
+- anomaly lifecycle
+- corrective actions
+- audit trails
+- reporting
+- enterprise integration
 
-This repository is the public showcase and reference architecture for FlowField 3.0.
+---
 
-It is intended to present:
+## Repository Scope
 
-the product concept
-architectural principles
-supported operational capabilities
-representative workflows
-use cases
-product evolution
+This repository is the **public showcase and reference architecture** for FlowField 3.0.
 
-Some internal orchestration logic, implementation details and commercial components are intentionally not included in the public repository.
+It presents:
 
-Commercial Use
+- the product concept
+- architectural principles
+- supported operational capabilities
+- representative workflows
+- use cases
+- product evolution
 
-FlowField is intended for organizations that need to digitize, standardize or orchestrate operational activities performed in the field.
+Internal orchestration logic, implementation details and commercial components are intentionally not included in this public repository.
+
+---
+
+## Commercial Use
+
+FlowField is intended for organizations that need to digitize, standardize and orchestrate operational activities performed in the field.
 
 Potential deployment models include:
 
-Enterprise deployment
-Private infrastructure
-Industry-specific implementation
-Pilot projects
-System integration
-Custom workflow development
+- enterprise deployment
+- private infrastructure
+- industry-specific implementation
+- pilot projects
+- system integration
+- custom workflow development
 
-For commercial licensing, pilots, partnerships or integration discussions, please open a GitHub issue or contact the project maintainer.
+For commercial licensing, pilots, partnerships or integration discussions, contact the project maintainer.
 
-Project Status
+---
 
-FlowField 3.0 — Active Development
+## Project Status
 
-The architecture is evolving toward a production-ready field operations orchestration platform.
+**FlowField 3.0 - Active Development**
 
-Public documentation and demonstrators will be added progressively.
+Public documentation and demonstrators are being developed around the core orchestration architecture.
 
-Roadmap
+---
 
-Upcoming public showcase work includes:
+## Roadmap
 
-architecture diagrams
-web configuration concept
-mobile field workflow
-interactive workflow examples
-module documentation
-representative industry scenarios
-screenshots and product mockups
-demonstration environment
-Documentation
+Planned public showcase components:
 
-Additional documentation will be published under:
+- [ ] Architecture documentation
+- [ ] Module overview
+- [ ] Workflow model
+- [ ] Industry use cases
+- [ ] Web configuration mockup
+- [ ] Mobile field workflow mockup
+- [ ] Architecture diagrams
+- [ ] Interactive demonstration
 
+---
+
+## Documentation
+
+```text
 docs/
-├── architecture.md
-├── modules.md
-├── use-cases.md
-├── workflow-model.md
-└── product-overview.md
-About FlowField
+|-- architecture.md
+|-- modules.md
+|-- use-cases.md
+|-- workflow-model.md
+`-- product-overview.md
+```
 
-FlowField 3.0
-Field Operations Orchestration Platform
+---
 
-Define the activity.
-Orchestrate the process.
-Guide the field.
-Preserve the evidence.
+## About FlowField
+
+**FlowField 3.0**  
+**Field Operations Orchestration Platform**
+
+> Define the activity.  
+> Orchestrate the process.  
+> Guide the field.  
+> Preserve the evidence.
+
+---
+
+Copyright 2026 FlowField.
