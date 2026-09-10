@@ -1,3 +1,5 @@
+<img width="1774" height="887" alt="flowfield-3 0-hero" src="https://github.com/user-attachments/assets/9e48b12c-0871-42c3-ab39-dda9cad17770" />
+
 # FlowField 3.0
 
 ## Field Operations Orchestration Platform
