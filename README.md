@@ -574,7 +574,7 @@ flowchart LR
 - [x] Edge-first AI architecture
 - [x] Provider-agnostic AI model
 - [x] VLM / visual evidence architecture
-- [ ] Product identity and hero artwork
+- [x] Product identity and hero artwork
 - [ ] Architecture visual
 - [ ] Web workspace mockup
 - [ ] Mobile field workflow mockup

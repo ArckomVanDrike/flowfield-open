@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: FlowField 3.0 Product Site
+    url: https://arckomvandrike.github.io/flowfield-open/
+    about: Explore the FlowField product overview.
+  - name: Technical Architecture
+    url: https://github.com/ArckomVanDrike/flowfield-open
+    about: Review the public reference architecture and documentation.

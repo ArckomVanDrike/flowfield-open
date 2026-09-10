@@ -1,0 +1,127 @@
+name: Discuss a FlowField Pilot
+description: Explore a pilot, proof of concept or field operations deployment.
+title: "[Pilot] "
+labels:
+  - pilot
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # Discuss a FlowField 3.0 Pilot
+
+        FlowField pilots are designed around a real operational process.
+
+        You do not need a complete technical specification.
+        A description of the field activity and its current workflow is enough to start.
+
+  - type: input
+    id: organization
+    attributes:
+      label: Organization
+      description: Company, team or organization name.
+      placeholder: Example Energy Operations
+    validations:
+      required: false
+
+  - type: dropdown
+    id: industry
+    attributes:
+      label: Industry or operational domain
+      options:
+        - Utilities
+        - Energy
+        - Telecommunications
+        - Construction
+        - Railway / Infrastructure
+        - Industrial Maintenance
+        - Engineering
+        - Safety / Compliance
+        - Field Service
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: process
+    attributes:
+      label: Field process
+      description: What operational activity would you like to orchestrate?
+      placeholder: |
+        Example:
+        Technicians inspect remote infrastructure, collect photographs and measurements,
+        report anomalies and require supervisor validation before closure.
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: How is this process managed today?
+      description: Existing tools or workflow.
+      placeholder: Spreadsheets, forms, WhatsApp, ERP, mobile app, paper, email...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: capabilities
+    attributes:
+      label: Capabilities that may be relevant
+      description: Select any that apply.
+      options:
+        - label: GPS / field context
+        - label: Safety and access controls
+        - label: Asset identification
+        - label: Photos / video / measurements
+        - label: Anomaly classification
+        - label: Corrective actions
+        - label: Documentation / compliance
+        - label: Supervisor approval
+        - label: AI assistance
+        - label: VLM / image analysis
+        - label: Edge / local AI
+
+  - type: input
+    id: users
+    attributes:
+      label: Approximate field team size
+      placeholder: "Example: 25 technicians + 4 supervisors"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: deployment
+    attributes:
+      label: Preferred deployment
+      options:
+        - Not sure yet
+        - Cloud
+        - Private infrastructure
+        - Hybrid
+        - Edge-oriented
+    validations:
+      required: false
+
+  - type: textarea
+    id: integrations
+    attributes:
+      label: Existing systems or integrations
+      description: ERP, EAM, CMMS, identity, asset management, APIs or other systems.
+      placeholder: SAP, custom ERP, REST API, Microsoft Entra ID...
+    validations:
+      required: false
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: What would make the pilot successful?
+      placeholder: |
+        Example:
+        Reduce missing evidence, standardize inspections and provide auditable closure.
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        FlowField 3.0 is currently offered through pilot, integration and enterprise deployment discussions.
