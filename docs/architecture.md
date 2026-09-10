@@ -621,6 +621,170 @@ This preserves operational predictability while still allowing AI capabilities t
 
 ---
 
+
+## Visual Intelligence and VLM Integration
+
+FlowField treats visual intelligence as a specialized AI capability connected to operational evidence.
+
+Images captured in the field belong first to `MOD_DATA_CAPTURE`.
+
+A Vision-Language Model can then analyze those images through the AI adapter layer.
+
+```text
+                   Technician
+                       |
+                       v
+                 Capture Image
+                       |
+                       v
+               MOD_DATA_CAPTURE
+                       |
+                       v
+              Evidence Repository
+                       |
+                       v
+                 VLM Adapter
+                       |
+          +------------+------------+
+          |                         |
+          v                         v
+     Cloud Vision               Edge / Local
+       Provider                      VLM
+          |                         |
+          +------------+------------+
+                       |
+                       v
+                AI Observation
+                       |
+                       v
+             Validation Boundary
+                       |
+             +---------+---------+
+             |                   |
+             v                   v
+      MOD_CRITICALITY         MOD_FLOW
+```
+
+### Current Reference Integration
+
+The current reference implementation can route field photographs to a GPT-based cloud vision API.
+
+This is an implementation choice rather than an architectural dependency.
+
+The same VLM boundary can be connected to alternative providers or to local inference infrastructure.
+
+### Edge-Capable by Design
+
+Visual inference may require significantly more compute than conversational or classification workloads.
+
+For environments with sufficient hardware, FlowField can place the VLM close to the operational environment.
+
+```text
+Field Device
+    |
+    v
+FlowField
+    |
+    v
+Local / Edge VLM
+```
+
+For environments where suitable edge hardware is not available, the same interface can use cloud inference:
+
+```text
+Field Device
+    |
+    v
+FlowField
+    |
+    v
+AI Adapter
+    |
+    v
+Cloud VLM
+```
+
+The workflow architecture remains unchanged.
+
+### Evidence Ownership
+
+The VLM does not replace the evidence object.
+
+The original image remains the primary captured evidence.
+
+The AI result is a derived interpretation associated with that evidence.
+
+Conceptually:
+
+```text
+Original Photo
+     |
+     +--> immutable / retained evidence
+     |
+     `--> VLM Analysis
+              |
+              v
+       Derived Observation
+```
+
+This distinction is important for auditability.
+
+### Decision Boundary
+
+A visual model may identify a possible defect or unsafe condition, but the analysis itself does not automatically need to become an authoritative operational decision.
+
+```text
+VLM Analysis
+     |
+     v
+Possible Anomaly
+     |
+     v
+Validation
+     |
+     +--> accepted --> MOD_CRITICALITY
+     |
+     `--> rejected / review required
+```
+
+Deployment policy can determine whether validation is:
+
+- deterministic
+- operator-confirmed
+- supervisor-confirmed
+- rule-assisted
+- automatically accepted for low-risk scenarios
+
+Critical workflow authority remains outside the VLM provider.
+
+### Provider Independence
+
+The visual AI adapter is designed so that provider-specific implementation stays outside the orchestration core.
+
+```text
+                    VLM Interface
+                         |
+       +-----------------+-----------------+
+       |                 |                 |
+       v                 v                 v
+   GPT Vision       Private VLM        Edge VLM
+   Cloud API         Endpoint          Runtime
+```
+
+This means organizations can select the visual inference environment based on:
+
+- connectivity
+- latency
+- cost
+- hardware availability
+- privacy requirements
+- enterprise policy
+- deployment constraints
+
+FlowField remains responsible for orchestration regardless of which VLM performs the visual analysis.
+
+---
+
 ## Reporting and Audit
 
 Reporting is a consequence of structured execution.
@@ -697,6 +861,51 @@ The same architecture can support different field environments by changing confi
 ```
 
 New industries can introduce specialized configuration and domain data while preserving the same orchestration principles.
+
+---
+
+
+## Organizational Governance Layer
+
+FlowField's process architecture is complemented by an organizational governance layer.
+
+```text
+Direction
+    |
+Project Manager
+    |
+Responsible
+    |
+Technician
+```
+
+These roles represent different operational responsibility boundaries rather than different workflow engines.
+
+The orchestration model remains shared.
+
+```text
+Role + Scope
+     |
+     v
+Authorization
+     |
+     v
+MOD_FLOW
+     |
+     v
+Permitted Operation
+```
+
+The standard public model distinguishes:
+
+- organization-level governance
+- project and activity management
+- operational supervision
+- field execution
+
+Exact permissions remain deployment-specific.
+
+See [Roles and Governance](roles-and-governance.md).
 
 ---
 

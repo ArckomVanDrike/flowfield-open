@@ -593,6 +593,122 @@ Cloud AI remains an alternative integration model rather than a mandatory depend
 
 ---
 
+
+# AI-Assisted Visual Inspection
+
+## Scenario
+
+A technician performing an inspection captures photographs of equipment, infrastructure or operational conditions.
+
+Instead of storing the photographs only as attachments, FlowField can submit them to a Vision-Language Model for additional analysis.
+
+```text
+Technician captures photo
+        |
+        v
+MOD_DATA_CAPTURE
+        |
+        v
+VLM Analysis
+        |
+        v
+Suggested Observation
+        |
+        v
+Validation
+        |
+        +--> no issue
+        |
+        `--> possible anomaly
+                 |
+                 v
+          MOD_CRITICALITY
+                 |
+                 v
+           MOD_ACTIONS
+```
+
+## Example Applications
+
+Visual assistance may be useful for scenarios such as:
+
+- infrastructure condition inspection
+- visible equipment damage
+- missing or incorrect components
+- installation verification
+- safety condition review
+- construction progress evidence
+- asset comparison
+- before/after maintenance evidence
+- documentation support
+
+The precise capabilities depend on the selected VLM and deployment configuration.
+
+## Cloud Reference
+
+The current FlowField reference implementation can use a GPT-based cloud vision API to analyze technician photographs.
+
+```text
+Field Technician
+       |
+       v
+    Photo
+       |
+       v
+  FlowField
+       |
+       v
+ AI Adapter
+       |
+       v
+GPT-based VLM
+       |
+       v
+Visual Observation
+```
+
+## Edge Alternative
+
+The same architecture can support local visual inference when suitable hardware is available.
+
+```text
+Field Technician
+       |
+       v
+    Photo
+       |
+       v
+  FlowField
+       |
+       v
+Local / Edge VLM
+       |
+       v
+Visual Observation
+```
+
+This is particularly relevant for deployments where connectivity, latency, infrastructure control or local processing are important.
+
+## Governance
+
+Visual AI remains an assistance layer.
+
+A model-generated observation can feed the operational process without automatically becoming the final operational decision.
+
+```text
+AI Interpretation
+       |
+       v
+Operational Validation
+       |
+       v
+Workflow Decision
+```
+
+This allows FlowField to combine modern multimodal intelligence with controlled and auditable field operations.
+
+---
+
 # Multi-Industry Model
 
 The same FlowField core can support multiple operational domains.

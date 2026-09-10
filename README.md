@@ -485,6 +485,103 @@ The orchestration architecture remains unchanged when the AI provider changes.
 
 ---
 
+
+## AI-Assisted Visual Evidence
+
+FlowField can use Vision-Language Models (VLMs) to analyze photographs collected by field technicians.
+
+A field photograph can therefore be more than a passive attachment.
+
+It can become **machine-interpretable operational evidence**.
+
+```text
+Technician
+    |
+    v
+Capture Photo
+    |
+    v
+MOD_DATA_CAPTURE
+    |
+    v
+Visual AI / VLM
+    |
+    v
+Suggested Observation
+    |
+    v
+Human / Deterministic Validation
+    |
+    +--> MOD_CRITICALITY
+    |
+    `--> MOD_FLOW
+```
+
+The current reference implementation can use a **GPT-based cloud vision API** for visual analysis.
+
+However, the visual intelligence layer follows the same provider-agnostic principle as the rest of FlowField's AI architecture.
+
+Depending on available infrastructure, visual analysis can be connected to:
+
+- cloud VLM providers
+- privately hosted vision models
+- enterprise AI gateways
+- local inference servers
+- edge VLM deployments
+
+This allows the same FlowField workflow to move from cloud-based vision to local or edge vision without redesigning the orchestration core.
+
+### AI Suggests. FlowField Governs.
+
+Visual AI can assist with tasks such as:
+
+- identifying visible elements
+- interpreting field conditions
+- supporting anomaly detection
+- comparing expected and observed conditions
+- extracting useful observations from images
+- assisting technical review
+- suggesting possible classifications
+
+The VLM does not need to become the final authority for critical workflow decisions.
+
+FlowField can keep authorization, validation, state transitions, blocking conditions and closure under deterministic or human-controlled governance.
+
+**The model interprets the evidence.  
+FlowField controls what happens next.**
+
+---
+
+
+## Roles and Operational Governance
+
+FlowField combines workflow orchestration with organizational governance.
+
+```text
+Direction
+    |
+Project Manager
+    |
+Responsible
+    |
+Technician
+```
+
+Each level interacts with the same operational platform from a different responsibility boundary:
+
+- **Direction** — portfolio visibility, KPI, audit and governance
+- **Project Manager** — activity definition, planning, configuration and control
+- **Responsible** — team supervision, assignments, exceptions, actions and validation
+- **Technician** — guided field execution and evidence collection
+
+Role and operational scope determine what each user can see and what actions they are permitted to perform.
+
+FlowField therefore controls both **what can happen next** and **who is allowed to do it**.
+
+See [Roles and Governance](docs/roles-and-governance.md).
+
+---
+
 ## Current Direction
 
 FlowField 3.0 is being developed as a reusable orchestration platform for enterprise field operations.
