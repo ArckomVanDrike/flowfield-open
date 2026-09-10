@@ -1,686 +1,606 @@
 # FlowField 3.0
 
-### Field Operations Orchestration Platform
+## Field Operations Orchestration Platform
 
-**Turn field activities into controlled, guided and auditable workflows.**
+> **Turn operational requirements into guided, stateful and auditable field workflows.**
 
-FlowField 3.0 is a modular orchestration platform designed for organizations that manage field operations such as inspections, maintenance, installations, technical audits, infrastructure activities and compliance-driven processes.
+FlowField 3.0 is a modular orchestration platform for organizations managing inspections, maintenance, installations, technical audits, asset operations, safety activities and other structured work performed in the field.
 
-Instead of relying on static forms or generic checklists, FlowField transforms an operational activity into a structured workflow that guides field personnel from start to completion.
+It does not simply digitize forms.
 
----
-
-## What is FlowField?
-
-FlowField is not simply a data collection application.
-
-It is an **orchestration layer for field operations**.
-
-The platform can:
-
-- define an operational activity
-- determine the capabilities required to execute it
-- generate the appropriate operational tasks
-- control task order and dependencies
-- collect field evidence and technical data
-- detect and classify anomalies
-- manage corrective actions
-- enforce validation and safety conditions
-- maintain an auditable activity history
-- control workflow completion
-
-The result is a field process that remains simple for the technician while being structured, traceable and governable for the organization.
+**It governs the operational process around them.**
 
 ---
 
-## Core Principle
+## What FlowField Does
 
-FlowField separates the **operational experience** from the **workflow logic**.
+FlowField transforms an operational requirement into an executable field workflow.
 
-```text
-Operational Activity
-        |
-        v
-Activity Definition
-        |
-        v
-Capability Selection
-        |
-        v
-Module Configuration
-        |
-        v
-Flow Orchestration
-        |
-        v
-Generated Tasks
-        |
-        v
-Field Execution
-        |
-        v
-Evidence / Events / Actions
-        |
-        v
-Reporting & Audit
+```mermaid
+flowchart LR
+    A[Operational Requirement] --> B[Activity Definition]
+    B --> C[Capability Configuration]
+    C --> D[FlowField Orchestrator]
+    D --> E[Guided Field Execution]
+    E --> F[Evidence, Events & Actions]
+    F --> G[Controlled Closure]
+    G --> H[Reporting & Audit]
 ```
 
 The technician sees only the actions required at that moment.
 
-The orchestration engine manages the underlying process.
-
----
-
-## Web + Field Experience
-
-FlowField is designed around two complementary interfaces.
-
-### Web Workspace
-
-The web interface is used to define and govern operational activities.
-
-A guided configuration process helps users specify:
-
-- activity context
-- intervention target
-- safety and access requirements
-- field evidence requirements
-- anomaly handling
-- corrective actions
-- formal documentation
-
-FlowField then prepares the corresponding operational workflow.
-
-### Mobile Field Experience
-
-The mobile experience is designed for technicians and field operators.
-
-**The technician does not build the process. They execute it.**
-
-A typical flow may look like:
-
-```text
-Check-in
-   |
-   v
-Access validation
-   |
-   v
-Safety controls
-   |
-   v
-Asset identification
-   |
-   v
-Inspection / data collection
-   |
-   v
-Evidence capture
-   |
-   v
-Anomaly detection
-   |
-   v
-Corrective action
-   |
-   v
-Validation
-   |
-   v
-Closure
-```
-
-The interface can remain simple and linear even when the underlying workflow contains complex rules and dependencies.
-
----
-
-## Modular Architecture
-
-FlowField 3.0 is based on reusable capability blocks rather than industry-specific hardcoded workflows.
-
-| Module | Responsibility |
-|---|---|
-| **MOD_CONTEXT** | Operator identity, activity context, site, geolocation, authorization and access |
-| **MOD_SAFETY** | Safety checks, PPE, operational risk, work permits and stop-work conditions |
-| **MOD_ASSET** | Asset identification, tracking, installation, removal, replacement and inventory |
-| **MOD_DATA_CAPTURE** | Photos, video, audio, measurements, notes, checklists and field evidence |
-| **MOD_CRITICALITY** | Detection, classification and severity assessment of anomalies |
-| **MOD_DOCUMENTATION** | Formal documents, certificates, compliance and document lifecycle |
-| **MOD_ACTIONS** | Corrective actions, remediation, assignments, priorities and SLA tracking |
-| **MOD_FLOW** | Task progression, dependencies, branching, blocking rules, escalation and closure |
-
----
-
-## Reusable by Design
-
-FlowField modules are **capability blocks**, not industry-specific applications.
-
-An operational workflow is created by combining and configuring the capabilities required for a particular activity.
-
-This makes the platform applicable to:
-
-- utilities
-- energy
-- telecommunications
-- construction
-- railway infrastructure
-- industrial maintenance
-- technical inspections
-- safety audits
-- asset management
-- regulated field operations
-
-The same orchestration model can support very different operational scenarios without rebuilding the platform for every use case.
-
----
-
-## Example Use Cases
-
-### Utility Infrastructure Inspection
-
-```text
-GPS check-in
--> site authorization
--> safety verification
--> infrastructure identification
--> photographic evidence
--> technical measurements
--> anomaly classification
--> corrective action
--> signatures
--> controlled closure
-```
-
-### Construction Site Inspection
-
-```text
-Site identification
--> PPE validation
--> access conditions
--> safety checklist
--> visual evidence
--> issue registration
--> remediation tracking
--> final validation
-```
-
-### Railway Safety Audit
-
-```text
-Operator authorization
--> infrastructure access
--> safety controls
--> inspection tasks
--> evidence collection
--> non-conformity classification
--> escalation
--> documentation
--> audit closure
-```
-
----
-
-## Orchestration Instead of Static Forms
-
-Traditional field applications often model an activity as a collection of forms.
-
-FlowField models an activity as a **stateful operational process**.
-
-A task can therefore:
-
-- become mandatory under specific conditions
-- block another task
-- generate an event
-- request additional evidence
-- trigger an escalation
-- create a corrective action
-- prevent workflow closure
-
-The process can react to what actually happens in the field.
-
----
-
-## Deterministic Where It Matters
-
-FlowField can use intelligent assistance during activity configuration while keeping critical operational decisions governed by structured rules.
-
-Validation, mandatory requirements, task progression and closure conditions can remain **deterministic and auditable**.
-
-This reduces ambiguity in environments where operational consistency and accountability matter.
-
----
-
-## Event-Driven Operations
-
-Operational activity produces structured events throughout execution.
-
-Examples:
-
-```text
-activity_created
-gps_verified
-access_granted
-access_denied
-safety_check_failed
-asset_identified
-measurement_recorded
-evidence_added
-criticality_detected
-action_created
-task_blocked
-workflow_escalated
-activity_closed
-```
-
-These events provide the foundation for:
-
-- audit trails
-- integrations
-- reporting
-- dashboards
-- operational analytics
-
----
-
-## Evidence and Traceability
-
-FlowField is designed around **evidence-driven execution**.
-
-An activity can require structured evidence such as:
-
-- photographs
-- videos
-- measurements
-- checklists
-- technical notes
-- annotations
-- documents
-- signatures
-- timestamps
-- geolocation
-- asset identifiers
-
-Required evidence can be validated before a workflow is allowed to continue or close.
-
----
-
-## Architecture Philosophy
-
-### Capability-based
-
-Operational capabilities are reusable across different industries and activity types.
-
-### Logic separated from UX
-
-The interface can simplify several technical operations into a single field experience while the underlying data remains structured.
-
-### Deterministic validation
-
-Critical workflow conditions are evaluated through explicit rules.
-
-### Event-driven traceability
-
-Relevant operational transitions produce auditable events.
-
-### Configuration-driven
-
-Operational behaviour is configured rather than duplicated through industry-specific application logic.
-
-### Auditable execution
-
-Field activities preserve their operational history from creation to closure.
+FlowField manages the process state, dependencies, rules, authorization and audit trail behind the interface.
 
 ---
 
 ## Why FlowField?
 
-Field operations are often fragmented across:
+Traditional field operations are often distributed across disconnected tools.
 
-```text
-Forms
-+
-Spreadsheets
-+
-Messaging
-+
-Photographs
-+
-Manual supervision
-```
+| Typical approach | Common problem |
+|---|---|
+| Forms and spreadsheets | Inconsistent execution |
+| Messaging applications | Decisions become difficult to audit |
+| Separate photo repositories | Evidence loses operational context |
+| Static checklists | Data is collected, but progression is not governed |
+| Manual supervision | High coordination overhead |
+| Disconnected systems | Fragmented operational history |
 
-FlowField transforms them into:
+FlowField introduces the missing orchestration layer.
 
-```text
-Simple field execution
-+
-Structured orchestration
-+
-Operational evidence
-+
-Process governance
-+
-Auditability
-```
+> **Forms collect information. FlowField governs what happens next.**
 
 ---
 
-## Architecture at a Glance
+## Stateful Orchestration
 
-```text
-             FLOWFIELD 3.0
+FlowField treats each activity as a controlled operational process.
 
-        +----------------------+
-        |     Web Workspace    |
-        | Activity Definition  |
-        +----------+-----------+
-                   |
-                   v
-        +----------------------+
-        | Capability Selection |
-        | Module Configuration |
-        +----------+-----------+
-                   |
-                   v
-        +----------------------+
-        |    MOD_FLOW Engine   |
-        | Rules / State /      |
-        | Dependencies         |
-        +----------+-----------+
-                   |
-                   v
-        +----------------------+
-        | Mobile Field Client  |
-        | Guided Execution     |
-        +----------+-----------+
-                   |
-                   v
-        +----------------------+
-        | Evidence / Events /  |
-        | Actions / Audit      |
-        +----------+-----------+
-                   |
-                   v
-        +----------------------+
-        | Reporting & Systems  |
-        +----------------------+
+```mermaid
+flowchart TD
+    A[Current State] --> B[Operational Event]
+    B --> C{Rule Evaluation}
+
+    C -->|Valid| D[Continue]
+    C -->|Alternative path| E[Branch]
+    C -->|Requirement missing| F[Block]
+    C -->|Critical condition| G[Escalate]
+
+    D --> H[New State]
+    E --> H
+    F --> H
+    G --> H
 ```
+
+A workflow can:
+
+- require specific evidence
+- enforce dependencies
+- branch according to field conditions
+- block invalid progression
+- escalate critical situations
+- open corrective actions
+- require approval
+- prevent closure until requirements are satisfied
 
 ---
 
-## Edge-First and Provider-Agnostic AI
+## Core Capability Architecture
 
-FlowField 3.0 is designed with a clear separation between its deterministic orchestration core and its optional AI capabilities.
+FlowField 3.0 is based on eight reusable capability blocks.
 
-**FlowField is AI-assisted, not AI-dependent.**
+| Module | Responsibility |
+|---|---|
+| **MOD_CONTEXT** | Operator identity, activity context, site, location and authorization |
+| **MOD_SAFETY** | Safety, PPE, operational risk, permits and stop-work conditions |
+| **MOD_ASSET** | Asset identification, verification and lifecycle operations |
+| **MOD_DATA_CAPTURE** | Photos, video, measurements, notes, checklists and operational evidence |
+| **MOD_CRITICALITY** | Detection and classification of anomalies and non-conformities |
+| **MOD_DOCUMENTATION** | Formal documents, certificates and compliance records |
+| **MOD_ACTIONS** | Corrective actions, ownership, priorities, SLA and remediation |
+| **MOD_FLOW** | State, dependencies, branching, blocking, escalation and closure |
 
-Core operational functions such as:
+Different field activities activate and configure different combinations of these capabilities.
 
+The platform remains reusable.
+
+---
+
+## Clear Responsibility Boundaries
+
+FlowField intentionally keeps operational concepts separate.
+
+```mermaid
+flowchart LR
+    DCP[MOD_DATA_CAPTURE] -->|Evidence| CRT[MOD_CRITICALITY]
+    CRT -->|Validated Issue| ACT[MOD_ACTIONS]
+    ACT -->|Action State| FLOW[MOD_FLOW]
+    FLOW -->|Process Decision| NEXT[Next Operational State]
+```
+
+**MOD_DATA_CAPTURE** records what was observed.
+
+**MOD_CRITICALITY** determines whether an operational issue exists.
+
+**MOD_ACTIONS** manages remediation.
+
+**MOD_FLOW** governs what happens next.
+
+---
+
+## Organizational Governance
+
+FlowField also models the people responsible for defining, supervising and executing operational work.
+
+```mermaid
+flowchart TD
+    D[Direction] --> PM[Project Manager]
+
+    PM --> R1[Responsible]
+    PM --> R2[Responsible]
+
+    R1 --> T1[Technician]
+    R1 --> T2[Technician]
+
+    R2 --> T3[Technician]
+    R2 --> T4[Technician]
+```
+
+| Role | Primary responsibility |
+|---|---|
+| **Direction** | Portfolio visibility, KPI, audit, compliance and governance |
+| **Project Manager** | Activity definition, planning, configuration and control |
+| **Responsible** | Team supervision, assignments, corrective actions, escalation and validation |
+| **Technician** | Guided field execution and evidence collection |
+
+FlowField therefore controls two things simultaneously:
+
+> **What can happen next — and who is allowed to make it happen.**
+
+---
+
+## Role + Scope + Workflow
+
+Authorization is not based only on a job title.
+
+```mermaid
+flowchart LR
+    I[Identity] --> A[Authorization]
+    R[Role] --> A
+    S[Operational Scope] --> A
+    W[Workflow State] --> A
+    A --> P[Permitted Operation]
+```
+
+A user can therefore be limited by:
+
+- organization
+- project
+- team or area
+- site
+- activity type
 - workflow state
-- task progression
-- validation
-- blocking conditions
-- dependencies
-- auditability
-- closure control
+- assigned responsibility
 
-remain governed by structured and deterministic logic.
-
-AI can assist with higher-level operations such as activity interpretation, configuration support, classification assistance and natural-language interaction without becoming the authority responsible for critical workflow decisions.
-
-### Edge-First Reference Architecture
-
-The reference implementation is designed to work with **Outy**, the edge AI layer developed within the CashOut ecosystem.
-
-This allows intelligence to be deployed close to the operational environment instead of requiring every interaction to depend directly on a remote cloud model.
-
-```text
-                    FLOWFIELD 3.0
-
-                Operational Clients
-             Web                 Mobile
-              |                    |
-              +---------+----------+
-                        |
-                        v
-              +-------------------+
-              |  FlowField Core   |
-              |                   |
-              | Workflow          |
-              | Rules             |
-              | State             |
-              | Validation        |
-              | Audit             |
-              +---------+---------+
-                        |
-                  Optional AI
-                        |
-              +---------v---------+
-              |    AI Adapter     |
-              | Provider-Agnostic |
-              +---------+---------+
-                        |
-           +------------+-------------+
-           |                          |
-           v                          v
-      Edge / Local AI              Cloud AI
-          Outy                 External Provider
-    CashOut ecosystem          Private / Hosted API
-```
-
-### Provider Independence
-
-Outy is the reference AI integration, not a hard dependency of the platform.
-
-The AI layer can be adapted to other inference environments, including:
-
-- cloud AI providers
-- privately hosted models
-- enterprise AI gateways
-- local inference services
-- customer-specific AI infrastructure
-
-This allows the deployment model to be selected according to operational, infrastructure and customer requirements.
-
-The orchestration architecture remains unchanged when the AI provider changes.
+Exact permissions remain deployment-specific.
 
 ---
 
+## Web + Mobile Experience
 
-## AI-Assisted Visual Evidence
+FlowField separates governance from field execution.
 
-FlowField can use Vision-Language Models (VLMs) to analyze photographs collected by field technicians.
+| Web Workspace | Mobile Field Experience |
+|---|---|
+| Activity definition | Assigned activities |
+| Workflow configuration | Current permitted task |
+| Planning | Check-in and access |
+| Assignments | Safety execution |
+| Monitoring | Asset identification |
+| Escalation management | Evidence capture |
+| Validation | Measurements |
+| Reporting | Issue reporting |
 
-A field photograph can therefore be more than a passive attachment.
+### Web Workspace
 
-It can become **machine-interpretable operational evidence**.
+Primarily designed for:
 
-```text
-Technician
-    |
-    v
-Capture Photo
-    |
-    v
-MOD_DATA_CAPTURE
-    |
-    v
-Visual AI / VLM
-    |
-    v
-Suggested Observation
-    |
-    v
-Human / Deterministic Validation
-    |
-    +--> MOD_CRITICALITY
-    |
-    `--> MOD_FLOW
+**Direction · Project Managers · Responsibles**
+
+### Mobile Field Client
+
+Primarily designed for:
+
+**Technicians · Inspectors · Field Operators**
+
+The technician does not design the workflow.
+
+**The technician executes it.**
+
+---
+
+## AI-Assisted, Not AI-Dependent
+
+Artificial intelligence is separated from the deterministic orchestration core.
+
+| AI Layer | FlowField Core |
+|---|---|
+| Interpret | Validate |
+| Assist | Authorize |
+| Suggest | Transition |
+| Analyze | Block |
+| Summarize | Escalate |
+| Support classification | Authorize closure |
+
+> **AI contributes intelligence. FlowField retains operational authority.**
+
+Critical process decisions can remain deterministic, reproducible and auditable.
+
+---
+
+## Edge-First AI Architecture
+
+The reference AI integration uses **Outy**, the edge-oriented AI layer developed within the CashOut ecosystem.
+
+```mermaid
+flowchart TD
+    FF[FlowField Core] --> ADAPTER[AI Adapter]
+
+    ADAPTER --> OUTY[Outy Edge]
+    ADAPTER --> CLOUD[Cloud AI Provider]
+    ADAPTER --> PRIVATE[Private Hosted Model]
+    ADAPTER --> LOCAL[Local / Edge Model]
 ```
 
-The current reference implementation can use a **GPT-based cloud vision API** for visual analysis.
+Outy is the reference integration.
 
-However, the visual intelligence layer follows the same provider-agnostic principle as the rest of FlowField's AI architecture.
+It is **not a mandatory dependency** of FlowField.
 
-Depending on available infrastructure, visual analysis can be connected to:
+The orchestration engine remains unchanged when the AI provider changes.
 
-- cloud VLM providers
-- privately hosted vision models
+---
+
+## Provider-Agnostic AI
+
+FlowField can integrate with different inference environments:
+
+- Outy
+- cloud AI APIs
+- private hosted models
 - enterprise AI gateways
 - local inference servers
-- edge VLM deployments
+- edge AI systems
+- customer-managed AI infrastructure
 
-This allows the same FlowField workflow to move from cloud-based vision to local or edge vision without redesigning the orchestration core.
-
-### AI Suggests. FlowField Governs.
-
-Visual AI can assist with tasks such as:
-
-- identifying visible elements
-- interpreting field conditions
-- supporting anomaly detection
-- comparing expected and observed conditions
-- extracting useful observations from images
-- assisting technical review
-- suggesting possible classifications
-
-The VLM does not need to become the final authority for critical workflow decisions.
-
-FlowField can keep authorization, validation, state transitions, blocking conditions and closure under deterministic or human-controlled governance.
-
-**The model interprets the evidence.  
-FlowField controls what happens next.**
+Provider-specific behavior remains behind the AI adapter boundary.
 
 ---
 
+## Visual Intelligence / VLM
 
-## Roles and Operational Governance
+Photographs captured by field technicians can be analyzed using Vision-Language Models.
 
-FlowField combines workflow orchestration with organizational governance.
+The current reference implementation can use a **GPT-based cloud vision API**.
 
-```text
-Direction
-    |
-Project Manager
-    |
-Responsible
-    |
-Technician
+```mermaid
+flowchart LR
+    T[Technician] --> P[Photo]
+    P --> DCP[MOD_DATA_CAPTURE]
+    DCP --> VLM[VLM Analysis]
+    VLM --> O[Suggested Observation]
+    O --> V{Validation}
+
+    V -->|Accepted| CRT[MOD_CRITICALITY]
+    V -->|Review required| HR[Human Review]
+
+    CRT --> FLOW[MOD_FLOW]
 ```
 
-Each level interacts with the same operational platform from a different responsibility boundary:
+Visual AI can assist with:
 
-- **Direction** — portfolio visibility, KPI, audit and governance
-- **Project Manager** — activity definition, planning, configuration and control
-- **Responsible** — team supervision, assignments, exceptions, actions and validation
-- **Technician** — guided field execution and evidence collection
+- identifying visible components
+- reviewing equipment condition
+- supporting anomaly detection
+- checking installation conditions
+- comparing expected and observed states
+- assisting technical review
 
-Role and operational scope determine what each user can see and what actions they are permitted to perform.
+The original photograph remains the operational evidence.
 
-FlowField therefore controls both **what can happen next** and **who is allowed to do it**.
-
-See [Roles and Governance](docs/roles-and-governance.md).
-
----
-
-## Current Direction
-
-FlowField 3.0 is being developed as a reusable orchestration platform for enterprise field operations.
-
-Current areas include:
-
-- workflow orchestration
-- configurable activity generation
-- modular operational capabilities
-- field execution UX
-- evidence management
-- anomaly lifecycle
-- corrective actions
-- audit trails
-- reporting
-- enterprise integration
+The VLM result is a **derived interpretation**.
 
 ---
 
-## Repository Scope
+## Cloud Today, Edge When Appropriate
 
-This repository is the **public showcase and reference architecture** for FlowField 3.0.
+Visual inference can use cloud or local infrastructure.
 
-It presents:
+```mermaid
+flowchart TD
+    V[VLM Adapter] --> C[Cloud VLM]
+    V --> P[Private VLM]
+    V --> E[Local / Edge VLM]
+```
 
-- the product concept
-- architectural principles
-- supported operational capabilities
-- representative workflows
-- use cases
-- product evolution
+Cloud inference is useful when local hardware cannot efficiently run a suitable vision model.
 
-Internal orchestration logic, implementation details and commercial components are intentionally not included in this public repository.
+Where sufficient compute is available, the same architecture can move VLM inference to a private or edge environment.
 
----
-
-## Commercial Use
-
-FlowField is intended for organizations that need to digitize, standardize and orchestrate operational activities performed in the field.
-
-Potential deployment models include:
-
-- enterprise deployment
-- private infrastructure
-- industry-specific implementation
-- pilot projects
-- system integration
-- custom workflow development
-
-For commercial licensing, pilots, partnerships or integration discussions, contact the project maintainer.
+**The workflow does not change.**
 
 ---
 
-## Project Status
+## Human-in-the-Loop
 
-**FlowField 3.0 - Active Development**
+AI-generated observations do not automatically inherit operational authority.
 
-Public documentation and demonstrators are being developed around the core orchestration architecture.
+```mermaid
+flowchart LR
+    AI[AI Suggestion] --> V{Validation}
+    V -->|Accept| P[Operational Process]
+    V -->|Reject| N[No Workflow Change]
+```
+
+Validation can depend on:
+
+- operational risk
+- user role
+- activity type
+- workflow policy
+- customer requirements
+
+This makes AI useful without making operational governance dependent on probabilistic output.
 
 ---
 
-## Roadmap
+## Evidence-Driven Execution
 
-Planned public showcase components:
+FlowField can work with structured field evidence including:
 
-- [ ] Architecture documentation
-- [ ] Module overview
-- [ ] Workflow model
-- [ ] Industry use cases
-- [ ] Web configuration mockup
-- [ ] Mobile field workflow mockup
-- [ ] Architecture diagrams
-- [ ] Interactive demonstration
+- photographs
+- video
+- audio
+- technical measurements
+- checklists
+- notes
+- graphical annotations
+- formal documents
+- signatures
+- timestamps
+- geolocation
+- asset identifiers
+
+Evidence can participate directly in workflow validation.
+
+A workflow can therefore refuse progression or closure when required evidence is missing.
+
+---
+
+## Example — Utility Infrastructure Inspection
+
+```mermaid
+flowchart TD
+    A[Assignment] --> B[GPS Check-in]
+    B --> C[Access Verification]
+    C --> D[Safety Validation]
+    D --> E[Asset Identification]
+    E --> F[Evidence & Measurements]
+    F --> G{Anomaly detected?}
+
+    G -->|No| H[Closure Validation]
+    G -->|Yes| I[Criticality Classification]
+
+    I --> J[Corrective Action]
+    J --> H
+
+    H --> K[Closed]
+```
+
+The technician experiences one guided inspection.
+
+Internally, FlowField coordinates context, safety, assets, evidence, criticalities, actions and closure.
+
+---
+
+## Example — Construction Site Inspection
+
+```mermaid
+flowchart TD
+    A[Site Identification] --> B[Operator Check-in]
+    B --> C[PPE Validation]
+    C --> D[Area Safety]
+    D --> E[Inspection]
+    E --> F[Evidence Collection]
+    F --> G{Issue detected?}
+
+    G -->|No| H[Final Validation]
+    G -->|Yes| I[Classify Issue]
+
+    I --> J[Assign Remediation]
+    J --> H
+
+    H --> K[Closure]
+```
+
+---
+
+## Example — Industrial Maintenance
+
+A maintenance workflow may coordinate:
+
+1. Work assignment
+2. Technician check-in
+3. Safety validation
+4. Equipment identification
+5. Initial condition
+6. Maintenance operation
+7. Before/after evidence
+8. Final validation
+9. Controlled closure
+
+If the final condition is invalid, FlowField can branch toward remediation or escalation instead of allowing the workflow to close incorrectly.
+
+---
+
+## Designed for Multiple Industries
+
+| Domain | Representative activities |
+|---|---|
+| **Utilities** | Infrastructure inspection |
+| **Energy** | Asset verification and maintenance |
+| **Telecommunications** | Installation and network field operations |
+| **Construction** | Site inspection and safety controls |
+| **Railway** | Infrastructure and compliance audits |
+| **Industrial Maintenance** | Equipment service and remediation |
+| **Engineering** | Technical surveys |
+| **Safety & Compliance** | Controlled inspection and evidence collection |
+
+> **Different industries. Different workflows. One orchestration architecture.**
+
+---
+
+## Enterprise Integration
+
+FlowField can operate between field execution and existing enterprise platforms.
+
+```mermaid
+flowchart TD
+    ERP[ERP / EAM / CMMS] <--> FF[FlowField]
+    DOC[Document Systems] <--> FF
+    ID[Identity Systems] <--> FF
+    AI[AI Infrastructure] <--> FF
+
+    FF --> WEB[Web Governance]
+    FF --> MOB[Mobile Field Execution]
+```
+
+Potential integration areas include:
+
+- ERP
+- EAM
+- CMMS
+- asset platforms
+- identity systems
+- document systems
+- reporting tools
+- enterprise APIs
+- AI infrastructure
+
+---
+
+## Deployment Flexibility
+
+FlowField can support different deployment strategies.
+
+| Model | Description |
+|---|---|
+| **Cloud** | Centralized platform and AI services |
+| **Private** | Customer-controlled infrastructure |
+| **Hybrid** | Central orchestration with private or local components |
+| **Edge-oriented** | Operational or AI services positioned closer to field execution |
+
+The deployment model can evolve without redesigning the operational workflow model.
+
+---
+
+## Public Architecture
+
+This repository is the public showcase and reference architecture for FlowField 3.0.
+
+It demonstrates:
+
+- product positioning
+- orchestration principles
+- reusable capabilities
+- organizational governance
+- workflow concepts
+- AI architecture
+- visual intelligence
+- representative industry scenarios
+
+The public repository intentionally does **not** expose:
+
+- proprietary orchestration rules
+- complete internal schemas
+- full internal event catalogs
+- customer-specific workflows
+- production credentials
+- private integrations
+- production infrastructure
+- commercial implementation details
 
 ---
 
 ## Documentation
 
-```text
-docs/
-|-- architecture.md
-|-- modules.md
-|-- use-cases.md
-|-- workflow-model.md
-`-- product-overview.md
+Explore the FlowField 3.0 public reference architecture:
+
+| Document | Purpose |
+|---|---|
+| [Product Overview](docs/product-overview.md) | Product positioning, operating model, AI and deployment strategy |
+| [Architecture](docs/architecture.md) | Core orchestration architecture and design principles |
+| [Capability Modules](docs/modules.md) | The eight reusable capability blocks |
+| [Workflow Model](docs/workflow-model.md) | States, events, conditions, branching, blocking and closure |
+| [Roles and Governance](docs/roles-and-governance.md) | Direction, Project Manager, Responsible and Technician |
+| [Industry Use Cases](docs/use-cases.md) | Representative field operation scenarios |
+
+### Recommended Reading
+
+```mermaid
+flowchart LR
+    A[Product Overview] --> B[Architecture]
+    B --> C[Modules]
+    C --> D[Workflow Model]
+    D --> E[Roles & Governance]
+    E --> F[Use Cases]
 ```
 
 ---
 
-## About FlowField
+## Project Status
 
-**FlowField 3.0**  
-**Field Operations Orchestration Platform**
+**FlowField 3.0 — Active Development**
 
-> Define the activity.  
-> Orchestrate the process.  
-> Guide the field.  
-> Preserve the evidence.
+### Public Showcase Roadmap
+
+- [x] Product overview
+- [x] Architecture documentation
+- [x] Capability module overview
+- [x] Workflow model
+- [x] Roles and governance model
+- [x] Industry use cases
+- [x] Edge-first AI architecture
+- [x] Provider-agnostic AI model
+- [x] VLM / visual evidence architecture
+- [ ] Product identity and hero artwork
+- [ ] Architecture visual
+- [ ] Web workspace mockup
+- [ ] Mobile field workflow mockup
+- [ ] Interactive demonstration
 
 ---
 
-Copyright 2026 FlowField.
+## Commercial Direction
+
+FlowField is designed for commercial deployment through models such as:
+
+- enterprise licensing
+- private deployments
+- pilot programs
+- proof-of-concept projects
+- custom integrations
+- industry-specific configurations
+- implementation services
+- support and maintenance
+
+A deployment can begin with one high-value operational workflow and expand progressively across the organization.
+
+---
+
+# FlowField 3.0
+
+### Field Operations Orchestration Platform
+
+> **Define the activity. Orchestrate the process. Guide the field. Interpret the evidence. Preserve the audit trail.**
+
+**Public Showcase · Reference Architecture · Active Development**
